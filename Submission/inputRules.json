@@ -1,0 +1,96 @@
+[
+  {
+    "name": "HighTemperatureAndActive",
+    "window": {
+      "type": "time",
+      "value": 0,
+      "unit": "minutes"
+    },
+    "conditions": {
+      "all": [
+        { "fact": "temperature", "operator": "greaterThan", "value": 45 },
+        { "fact": "isActive", "operator": "equal", "value": true }
+      ]
+    },
+    "event": {
+      "type": "alertHighTemperatureAndActive",
+      "params": { "message": "High temperature with active status" }
+    }
+  },
+  {
+    "name": "LowHumidityAndHighPressure",
+    "window": {
+      "type": "time",
+      "value": 0,
+      "unit": "minutes"
+    },
+    "conditions": {
+      "all": [
+        { "fact": "humidity", "operator": "lessThan", "value": 5 },
+        { "fact": "pressure", "operator": "greaterThan", "value": 50 }
+      ]
+    },
+    "event": {
+      "type": "alertLowHumidityHighPressure",
+      "params": { "message": "Low humidity with high pressure detected" }
+    }
+  },
+  {
+    "name": "ExtremePressureConditions",
+    "window": {
+      "type": "time",
+      "value": 0,
+      "unit": "minutes"
+    },
+    "conditions": {
+      "any": [
+        { "fact": "pressure", "operator": "greaterThan", "value": 55 },
+        { "fact": "pressure", "operator": "lessThan", "value": 15 }
+      ]
+    },
+    "event": {
+      "type": "alertExtremePressure",
+      "params": { "message": "Extreme pressure levels detected" }
+    }
+  },
+  {
+    "name": "IdealWeatherConditions",
+    "window": {
+      "type": "time",
+      "value": 0,
+      "unit": "minutes"
+    },
+    "conditions": {
+      "any": [
+        { "fact": "temperature", "operator": "greaterThan", "value": 40 },
+        { "fact": "temperature", "operator": "lessThan", "value": 50 },
+        { "fact": "humidity", "operator": "greaterThan", "value": 5 },
+        { "fact": "humidity", "operator": "lessThan", "value": 15 },
+        { "fact": "pressure", "operator": "greaterThan", "value": 20 },
+        { "fact": "pressure", "operator": "lessThan", "value": 45 }
+      ]
+    },
+    "event": {
+      "type": "alertIdealConditions",
+      "params": { "message": "Ideal conditions for monitoring" }
+    }
+  },
+  {
+    "name": "InactiveWithLowPressure",
+    "window": {
+      "type": "time",
+      "value": 0,
+      "unit": "minutes"
+    },
+    "conditions": {
+      "all": [
+        { "fact": "isActive", "operator": "equal", "value": false },
+        { "fact": "pressure", "operator": "lessThan", "value": 20 }
+      ]
+    },
+    "event": {
+      "type": "alertInactiveLowPressure",
+      "params": { "message": "Inactive status with low pressure detected" }
+    }
+  }
+]

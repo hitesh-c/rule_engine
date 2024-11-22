@@ -1,0 +1,7 @@
+src/
+types/*.test-d.ts
+.travis.yml
+.gitignore
+test/
+examples/
+docs/
